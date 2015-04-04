@@ -24,9 +24,11 @@ textarea {
    position: absolute;
    left: 20px;
    top: 20px;
+   bottom: 20px;
    width: 500px;
    background-color: gray;
    color: white;
    border: none;
    border-radius: 10px;
+   overflow-y: scroll;
 }

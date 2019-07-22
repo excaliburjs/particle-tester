@@ -15,6 +15,10 @@ input[type='range']{
    width: 180px;
 }
 
+input[type='text']{
+   width: 45px;
+}
+
 textarea {
    width: 500px;
 }

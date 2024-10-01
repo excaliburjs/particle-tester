@@ -3,122 +3,149 @@
    <title>Excalibur Particle Tester</title>
    <link rel="stylesheet" type="text/css" href="main.css">
    <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
-   <link rel="icon" type="image/x-icon" href="favicon.png" />
+   <link rel="icon" type="image/x-icon" href="favicon.ico" />
+   <link rel="stylesheet" href="prism.css">
 </head>
 <body>
    <div class="surface"> 
       <div class="particle-controls">
-         <h2>Excalibur</h2>
-         <h3>Particle Controls</h3>
+         <h1>Excalibur:Particle Tester</h1>
          <hr>
 
-         <label for="emit">Emit Rate<br>(p/s)</label>
-         <input type="range" id="emit" min="0" max="1000" step="1" data-bind="value: emitRate">
-         <input type="text" data-bind="value: emitRate, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="emit">Emit Rate (p/s)</label>
+            <input type="range" id="emit" min="0" max="1000" step="1" data-bind="value: emitRate">
+            <input type="text" data-bind="value: emitRate, valueUpdate: 'input'"></input>
+         </div>
+         <div class="control">
+            <label for="typeSelect">Emitter Type</label>
+            <select id="typeSelect" data-bind="options: emitterTypes, optionsText: 'name', value: emitterType"></select>
+         </div>
 
-         <label for="typeSelect">Emitter Type</label>
-         <select id="typeSelect" data-bind="options: emitterTypes, optionsText: 'name', value: emitterType"></select>
-         <br>
+         <div class="control">
+            <label for="radius">Radius (pixels)</label>
+            <input type="range" id="radius" min="0" max="1000" step="1" data-bind="value: radius">
+            <input type="text" data-bind="value: radius, valueUpdate: 'input'"></input>
+         </div>
 
-         <label for="radius">Radius<br>(pixels)</label>
-         <input type="range" id="radius" min="0" max="1000" step="1" data-bind="value: radius">
-         <input type="text" data-bind="value: radius, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="width">Width</label>
+            <input type="range" id="width" min="0" max="10000" step="1" data-bind="value: width">
+            <input type="text" data-bind="value: width, valueUpdate: 'input'"></input>
+         </div>
 
-         <label for="width">Width</label>
-         <input type="range" id="width" min="0" max="10000" step="1" data-bind="value: width">
-         <input type="text" data-bind="value: width, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="height">Height</label>
+            <input type="range" id="height" min="0" max="10000" step="1" data-bind="value: height">
+            <input type="text" data-bind="value: height, valueUpdate: 'input'"></input>
+         </div>
 
-         <label for="height">Height</label>
-         <input type="range" id="height" min="0" max="10000" step="1" data-bind="value: height">
-         <input type="text" data-bind="value: height, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="minVel">MinVel</label>
+            <input type="range" id="minVel" min="0" max="1000" data-bind="value: minVel">
+            <input type="text" data-bind="value: minVel, valueUpdate: 'input'"></input>
+         </div>
 
-         <label for="minVel">MinVel</label>
-         <input type="range" id="minVel" min="0" max="1000" data-bind="value: minVel">
-         <input type="text" data-bind="value: minVel, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="maxVel">MaxVel</label>
+            <input type="range" id="maxVel" min="0" max="1000" data-bind="value: maxVel">
+            <input type="text" data-bind="value: maxVel, valueUpdate: 'input'"></input>
+         </div>
 
-         <label for="maxVel">MaxVel</label>
-         <input type="range" id="maxVel" min="0" max="1000" data-bind="value: maxVel">
-         <input type="text" data-bind="value: maxVel, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="minAngle">MinAngle</label>
+            <input type="range" id="minAngle" min="0" max="6.28" step=".1" data-bind="value: minAngle">
+            <input type="text" data-bind="value: minAngle, valueUpdate: 'input'"></input>
+         </div>
 
-         <label for="minAngle">MinAngle</label>
-         <input type="range" id="minAngle" min="0" max="6.28" step=".1" data-bind="value: minAngle">
-         <input type="text" data-bind="value: minAngle, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="maxAngle">MaxAngle</label>
+            <input type="range" id="maxAngle" min="0" max="6.28" step=".1" data-bind="value: maxAngle">
+            <input type="text" data-bind="value: maxAngle, valueUpdate: 'input'"></input>
+         </div>
 
-         <label for="maxAngle">MaxAngle</label>
-         <input type="range" id="maxAngle" min="0" max="6.28" step=".1" data-bind="value: maxAngle">
-         <input type="text" data-bind="value: maxAngle, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="minSize">Min Size</label>
+            <input type="range" id="minSize" min="1" max="200" step="1" data-bind="value: minSize">
+            <input type="text" data-bind="value: minSize, valueUpdate: 'input'"></input>
+         </div>
+         
 
-         <label for="minSize">Min Size</label>
-         <input type="range" id="minSize" min="1" max="200" step="1" data-bind="value: minSize">
-         <input type="text" data-bind="value: minSize, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="maxSize">Max Size</label>
+            <input type="range" id="maxSize" min="1" max="200" step="1" data-bind="value: maxSize">
+            <input type="text" data-bind="value: maxSize, valueUpdate: 'input'"></input>
+         </div>
+         
 
-         <label for="maxSize">Max Size</label>
-         <input type="range" id="maxSize" min="1" max="200" step="1" data-bind="value: maxSize">
-         <input type="text" data-bind="value: maxSize, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="startSize">Start Size</label>
+            <input type="range" id="startSize" min="0" max="200" step="1" data-bind="value: startSize">
+            <input type="text" data-bind="value: startSize, valueUpdate: 'input'"></input>
+         </div>
+         
 
-         <label for="startSize">Start Size</label>
-         <input type="range" id="startSize" min="0" max="200" step="1" data-bind="value: startSize">
-         <input type="text" data-bind="value: startSize, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="endSize">End Size</label>
+            <input type="range" id="endSize" min="0" max="200" step="1" data-bind="value: endSize">
+            <input type="text" data-bind="value: endSize, valueUpdate: 'input'"></input>
+         </div>
 
-         <label for="endSize">End Size</label>
-         <input type="range" id="endSize" min="0" max="200" step="1" data-bind="value: endSize">
-         <input type="text" data-bind="value: endSize, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="ax">Accel X</label>
+            <input type="range" id="ax" min="-2000" max="2000" step="1" data-bind="value: ax">
+            <input type="text" data-bind="value: ax, valueUpdate: 'input'"></input>
+         </div>
+         
 
-         <label for="ax">Accel X</label>
-         <input type="range" id="ax" min="-2000" max="2000" step="1" data-bind="value: ax">
-         <input type="text" data-bind="value: ax, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="ay">Accel Y</label>
+            <input type="range" id="ay" min="-2000" max="2000" step="1" data-bind="value: ay">
+            <input type="text" data-bind="value: ay, valueUpdate: 'input'"></input>
+         </div>
+         
 
-         <label for="ay">Accel Y</label>
-         <input type="range" id="ay" min="-2000" max="2000" step="1" data-bind="value: ay">
-         <input type="text" data-bind="value: ay, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="life">Life (ms)</label>
+            <input type="range" id="life" min="1" max="7000" step="1" data-bind="value: particleLife">
+            <input type="text" data-bind="value: particleLife, valueUpdate: 'input'"></input>
+         </div>
+         
 
-         <label for="life">Life (ms)</label>
-         <input type="range" id="life" min="1" max="7000" step="1" data-bind="value: particleLife">
-         <input type="text" data-bind="value: particleLife, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="opacity">Opacity</label>
+            <input type="range" id="opacity" min="0" max="1" step=".01" data-bind="value: opacity">
+            <input type="text" data-bind="value: opacity, valueUpdate: 'input'"></input>
+         </div>
+         
 
-         <label for="opacity">Opacity</label>
-         <input type="range" id="opacity" min="0" max="1" step=".01" data-bind="value: opacity">
-         <input type="text" data-bind="value: opacity, valueUpdate: 'input'"></input>
-         <br>
+         <div class="control">
+            <label for="fade">Fade Out</label>
+            <input type="checkbox" id="fade" data-bind="checked: fade">
+            
+         </div>
 
-         <label for="fade">Fade Out</label>
-         <input type="checkbox" id="fade" data-bind="checked: fade">
-         <br>
+         <div class="control">
+            <label for="beginColorSelect">Begin Color</label>
+            <select id="beginColorSelect" data-bind="options: colors, optionsText: 'name', value: beginColor, optionsAfterRender: setOptionBackground"></select>
+         </div>
 
-         <label for="beginColorSelect">Begin Color</label>
-         <select id="beginColorSelect" data-bind="options: colors, optionsText: 'name', value: beginColor"></select>
-         <br>
-
-         <label for="endColorSelect">End Color</label>
-         <select id="endColorSelect" data-bind="options: colors, optionsText: 'name', value: endColor"></select>
-         <br>
-
+         <div class="control">
+            <label for="endColorSelect">End Color</label>
+            <select id="endColorSelect" data-bind="options: colors, optionsText: 'name', value: endColor, optionsAfterRender: setOptionBackground"></select>
+         </div>
          <hr>
-         <textarea rows="16" readonly spellcheck="false" data-bind="text: code">
-         </textarea>
+         <div class="code">
+            <button data-bind="click: copyToClipboard" id="copy-to-clipboard">Copy</button>
+            <pre><code class="language-ts" data-bind="text:code"></code></pre>
+         </div>
 
       </div>
-      <canvas id="game"/>
+      <canvas id="game"></canvas>
    </div>
 
-   <script type="text/javascript" src="knockout-3.0.0.js"></script>
-   <script type="text/javascript" src="bower_components/excalibur/dist/excalibur-0.2.2.min.js"></script>
-   <script type="text/javascript" src="main.js"></script>
+   <script type="module" src="prism.js"></script>
+   <script type="module" src="main.ts"></script>
 
 </body>
 </html>

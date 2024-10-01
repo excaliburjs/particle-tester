@@ -1,0 +1,26 @@
+{
+  "name": "particle-tester",
+  "version": "1.0.0",
+  "description": "Particle tester for Excalibur",
+  "main": "main.js",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
+  },
+  "keywords": [
+    "excaliburjs",
+    "gamedev",
+    "particles"
+  ],
+  "author": "Erik Onarheim",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "excalibur": "0.29.3",
+    "knockout": "3.5.1",
+    "typescript": "5.6.2"
+  },
+  "devDependencies": {
+    "vite": "5.4.8"
+  }
+}

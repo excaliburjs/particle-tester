@@ -3,7 +3,7 @@ body {
    padding: 0;
    background-color: black;
    font-family: 'Press Start 2P';
-   font-size: 10pt;
+   font-size: 1em;
 }
 
 label {
@@ -21,6 +21,35 @@ input[type='text']{
 
 textarea {
    width: 500px;
+}
+
+h1 {
+   font-size: 1.25em;
+}
+
+
+.code {
+   position: relative;
+}
+
+.code #copy-to-clipboard {
+   position: absolute;
+   top: 10;
+   right: 10;
+}
+
+.control {
+   display: flex;
+   white-space: nowrap;
+   padding: .15em;
+   align-items: center;
+}
+
+.control label {
+   margin-right: auto;
+}
+.control:nth-child(2n) {
+   background-color: #2f2f2f;
 }
 
 .particle-controls {

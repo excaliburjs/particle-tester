@@ -127,12 +127,22 @@
 
          <div class="control">
             <label for="beginColorSelect">Begin Color</label>
-            <select id="beginColorSelect" data-bind="options: colors, optionsText: 'name', value: beginColor, optionsAfterRender: setOptionBackground"></select>
+            <select id="beginColorSelect" data-bind="
+               style: { backgroundColor: beginColor().color, color: beginColor().inverted },
+               options: colors,
+               optionsText: 'name',
+               value: beginColor,
+               optionsAfterRender: setOptionBackground"></select>
          </div>
 
          <div class="control">
             <label for="endColorSelect">End Color</label>
-            <select id="endColorSelect" data-bind="options: colors, optionsText: 'name', value: endColor, optionsAfterRender: setOptionBackground"></select>
+            <select id="endColorSelect" data-bind="
+               style: { backgroundColor: endColor().color, color: beginColor().inverted },
+               options: colors,
+               optionsText: 'name',
+               value: endColor,
+               optionsAfterRender: setOptionBackground"></select>
          </div>
          <hr>
          <div class="code">

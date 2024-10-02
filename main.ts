@@ -32,7 +32,8 @@ emitter.minSize = 1;
 emitter.startSize = 0;
 emitter.endSize = 0;
 emitter.acceleration = new ex.Vector(0, 800);
-emitter.color = ex.Color.Rose;
+emitter.beginColor = ex.Color.Rose;
+emitter.endColor = ex.Color.Yellow;
 game.add(emitter);
 game.start();
 
@@ -40,7 +41,7 @@ game.start();
 export class EmitterViewModelV2 {
    code: PureComputed<string>;
 
-   colors: { name: string, value: ex.Color, color: string }[] = [];
+   colors: { name: string, value: ex.Color, color: string, inverted: string }[] = [];
    emitterTypes: { name: string, value: string }[] = [];
 
    x: Observable<number> = ko.observable(0);
@@ -58,8 +59,8 @@ export class EmitterViewModelV2 {
    radius: Observable<number> = ko.observable(5);
    emitterType: Observable<{ name: string, value: string }>;
 
-   beginColor: Observable<{ name: string, value: ex.Color, color: string  }>;
-   endColor: Observable<{ name: string, value: ex.Color, color: string  }>;
+   beginColor: Observable<{ name: string, value: ex.Color, color: string, inverted: string }>;
+   endColor: Observable<{ name: string, value: ex.Color, color: string, inverted: string }>;
 
    ax: Observable<number> = ko.observable(0);
    ay: Observable<number> = ko.observable(800);
@@ -72,16 +73,20 @@ export class EmitterViewModelV2 {
    constructor(emitter: ex.ParticleEmitter) {
       for (const color of Object.getOwnPropertyNames(ex.Color) ) {
          if (ex.Color.hasOwnProperty(color) && color.charAt(0) === color.charAt(0).toUpperCase()) {
+            const invertedColor = (ex.Color as any)[color].invert().darken(.7);
+            invertedColor.a = 1;
+            const invertedColorString = invertedColor.toRGBA();
             this.colors.push({ 
                name: color,
                value: (ex.Color as any)[color],
-               color: ((ex.Color as any)[color] as ex.Color).toRGBA()
+               color: ((ex.Color as any)[color] as ex.Color).toRGBA(),
+               inverted: invertedColorString
             });
          }
       }
       this.colors.reverse();
-      this.beginColor = ko.observable({ name: "Rose", value: ex.Color.Rose, color: ex.Color.Rose.toRGBA() });
-      this.endColor = ko.observable({ name: "Yellow", value: ex.Color.Yellow, color: ex.Color.Yellow.toRGBA() });
+      this.beginColor = ko.observable(this.colors.find(c => c.name === "Rose")!);
+      this.endColor = ko.observable(this.colors.find(c => c.name === "Yellow")!);
 
       for (var type in ex.EmitterType) {
          if (ex.EmitterType.hasOwnProperty(type) && isNaN(type as any)) {
@@ -217,10 +222,8 @@ export class EmitterViewModelV2 {
    }
 
    setOptionBackground(option: HTMLOptionElement, item: any) {
-      option.style.backgroundColor = `${item.color}`;
-      const invertedColor = ex.Color.fromRGBString(item.color).invert().darken(.7);
-      invertedColor.a = 1;
-      option.style.color = `${invertedColor.toRGBA()}`;
+      option.style.backgroundColor = item.color;
+      option.style.color = item.inverted;
    }
 }
 
@@ -251,3 +254,7 @@ game.input.pointers.on('up', function (evt) {
 
 ko.applyBindings(vm);
 
+setTimeout(() => {
+   // ambient global from script tag, ack lazy way to call it
+   (window as any).Prism.highlightAll();
+})

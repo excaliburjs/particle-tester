@@ -98,7 +98,7 @@ export class EmitterViewModelV2 {
 
       // setup subscriptions
       this.emitRate.subscribe((newRate) => {
-         emitter.emitRate = newRate;
+         emitter.emitRate = +newRate;
       });
 
       this.emitterType.subscribe((newType) => {
@@ -106,43 +106,43 @@ export class EmitterViewModelV2 {
       });
 
       this.radius.subscribe((newRadius) => {
-         emitter.radius = newRadius;
+         emitter.radius = +newRadius;
       });
 
       this.minVel.subscribe((newVel) => {
-         emitter.minVel = newVel;
+         emitter.minVel = +newVel;
       });
 
       this.maxVel.subscribe((newVel) => {
-         emitter.maxVel = newVel;
+         emitter.maxVel = +newVel;
       });
 
       this.minAngle.subscribe((newVel) => {
-         emitter.minAngle = newVel;
+         emitter.minAngle = +newVel;
       });
 
       this.maxAngle.subscribe((newVel) => {
-         emitter.maxAngle = newVel;
+         emitter.maxAngle = +newVel;
       });
 
       this.minSize.subscribe((newSize) => {
-         emitter.minSize = newSize;
+         emitter.minSize = +newSize;
       });
 
       this.maxSize.subscribe((newSize) => {
-         emitter.maxSize = newSize;
+         emitter.maxSize = +newSize;
       });
 
       this.startSize.subscribe((newSize) => {
-         emitter.startSize = newSize;
+         emitter.startSize = +newSize;
       });
 
       this.endSize.subscribe((newSize) => {
-         emitter.endSize = newSize;
+         emitter.endSize = +newSize;
       });
 
       this.particleLife.subscribe((life) => {
-         emitter.particleLife = life;
+         emitter.particleLife = +life;
       });
 
       this.beginColor.subscribe((newColor) => {
@@ -154,7 +154,7 @@ export class EmitterViewModelV2 {
       });
 
       this.opacity.subscribe(function (newOpacity) {
-         emitter.opacity = newOpacity;
+         emitter.opacity = +newOpacity;
       });
 
       this.fade.subscribe(function (newFade) {
@@ -162,11 +162,11 @@ export class EmitterViewModelV2 {
       });
 
       this.ax.subscribe(function (newAx) {
-         emitter.acceleration.x = newAx;
+         emitter.acceleration.x = +newAx;
       });
 
       this.ay.subscribe(function (newAy) {
-         emitter.acceleration.y = newAy;
+         emitter.acceleration.y = +newAy;
       });
 
       // this.width.subscribe(function(width){

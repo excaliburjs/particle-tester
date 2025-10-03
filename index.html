@@ -1,7 +1,7 @@
 <html>
 <head>
    <title>Excalibur Particle Tester</title>
-   <link rel="stylesheet" type="text/css" href="main.css">
+   <link rel="stylesheet" type="text/css" href="./src/main.css">
    <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
    <link rel="icon" type="image/x-icon" href="favicon.ico" />
    <link rel="stylesheet" href="prism.css">
@@ -12,6 +12,10 @@
          <h1>Excalibur:Particle Tester</h1>
          <hr>
 
+         <div class="control">
+            <label for="isEmitting">Is Emitting</label>
+            <input type="checkbox" id="isEmitting" data-bind="checked: isEmitting">
+         </div>
          <div class="control">
             <label for="emit">Emit Rate (p/s)</label>
             <input type="range" id="emit" min="0" max="1000" step="1" data-bind="value: emitRate">
@@ -29,37 +33,25 @@
          </div>
 
          <div class="control">
-            <label for="width">Width</label>
-            <input type="range" id="width" min="0" max="10000" step="1" data-bind="value: width">
-            <input type="text" data-bind="value: width, valueUpdate: 'input'"></input>
+            <label for="minSpeed">Min Speed</label>
+            <input type="range" id="minSpeed" min="0" max="1000" data-bind="value: minSpeed">
+            <input type="text" data-bind="value: minSpeed, valueUpdate: 'input'"></input>
          </div>
 
          <div class="control">
-            <label for="height">Height</label>
-            <input type="range" id="height" min="0" max="10000" step="1" data-bind="value: height">
-            <input type="text" data-bind="value: height, valueUpdate: 'input'"></input>
+            <label for="maxSpeed">Max Speed</label>
+            <input type="range" id="maxSpeed" min="0" max="1000" data-bind="value: maxSpeed">
+            <input type="text" data-bind="value: maxSpeed, valueUpdate: 'input'"></input>
          </div>
 
          <div class="control">
-            <label for="minVel">MinVel</label>
-            <input type="range" id="minVel" min="0" max="1000" data-bind="value: minVel">
-            <input type="text" data-bind="value: minVel, valueUpdate: 'input'"></input>
-         </div>
-
-         <div class="control">
-            <label for="maxVel">MaxVel</label>
-            <input type="range" id="maxVel" min="0" max="1000" data-bind="value: maxVel">
-            <input type="text" data-bind="value: maxVel, valueUpdate: 'input'"></input>
-         </div>
-
-         <div class="control">
-            <label for="minAngle">MinAngle</label>
+            <label for="minAngle">Min Angle</label>
             <input type="range" id="minAngle" min="0" max="6.28" step=".1" data-bind="value: minAngle">
             <input type="text" data-bind="value: minAngle, valueUpdate: 'input'"></input>
          </div>
 
          <div class="control">
-            <label for="maxAngle">MaxAngle</label>
+            <label for="maxAngle">Max Angle</label>
             <input type="range" id="maxAngle" min="0" max="6.28" step=".1" data-bind="value: maxAngle">
             <input type="text" data-bind="value: maxAngle, valueUpdate: 'input'"></input>
          </div>
@@ -70,21 +62,18 @@
             <input type="text" data-bind="value: minSize, valueUpdate: 'input'"></input>
          </div>
          
-
          <div class="control">
             <label for="maxSize">Max Size</label>
             <input type="range" id="maxSize" min="1" max="200" step="1" data-bind="value: maxSize">
             <input type="text" data-bind="value: maxSize, valueUpdate: 'input'"></input>
          </div>
          
-
          <div class="control">
             <label for="startSize">Start Size</label>
             <input type="range" id="startSize" min="0" max="200" step="1" data-bind="value: startSize">
             <input type="text" data-bind="value: startSize, valueUpdate: 'input'"></input>
          </div>
          
-
          <div class="control">
             <label for="endSize">End Size</label>
             <input type="range" id="endSize" min="0" max="200" step="1" data-bind="value: endSize">
@@ -97,32 +86,27 @@
             <input type="text" data-bind="value: ax, valueUpdate: 'input'"></input>
          </div>
          
-
          <div class="control">
             <label for="ay">Accel Y</label>
             <input type="range" id="ay" min="-2000" max="2000" step="1" data-bind="value: ay">
             <input type="text" data-bind="value: ay, valueUpdate: 'input'"></input>
          </div>
          
-
          <div class="control">
             <label for="life">Life (ms)</label>
-            <input type="range" id="life" min="1" max="7000" step="1" data-bind="value: particleLife">
-            <input type="text" data-bind="value: particleLife, valueUpdate: 'input'"></input>
+            <input type="range" id="life" min="1" max="7000" step="1" data-bind="value: life">
+            <input type="text" data-bind="value: life, valueUpdate: 'input'"></input>
          </div>
          
-
          <div class="control">
             <label for="opacity">Opacity</label>
             <input type="range" id="opacity" min="0" max="1" step=".01" data-bind="value: opacity">
             <input type="text" data-bind="value: opacity, valueUpdate: 'input'"></input>
          </div>
          
-
          <div class="control">
             <label for="fade">Fade Out</label>
             <input type="checkbox" id="fade" data-bind="checked: fade">
-            
          </div>
 
          <div class="control">
@@ -154,8 +138,8 @@
       <canvas id="game"></canvas>
    </div>
 
-   <script type="module" src="prism.js"></script>
-   <script type="module" src="main.ts"></script>
+   <script type="module" src="/prism.js"></script>
+   <script type="module" src="./src/main.ts"></script>
 
 </body>
 </html>
